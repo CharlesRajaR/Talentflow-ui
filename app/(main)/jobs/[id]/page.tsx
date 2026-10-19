@@ -1,5 +1,6 @@
 "use client"
 import { useParams } from "next/navigation"
+import { Suspense } from "react";
 
 const JobDetails = () => {
   const params = useParams<{ id: string }>()
@@ -9,11 +10,12 @@ const JobDetails = () => {
 
   return (
     // <div>JobDetails {id}</div>
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="flex px-4 py-6 mx-5 shadow-black shadow-2xl flex-col w-full">
-        <div>
-          <button className="text-gray-500 font-semibold hover:cursor-pointer hover:text-gray-700">{"< "} Back to jobs</button>
-        </div>
+    <Suspense fallback={<div>Loading...</div>}>
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="flex px-4 py-6 mx-5 shadow-black shadow-2xl flex-col w-full">
+          <div>
+            <button className="text-gray-500 font-semibold hover:cursor-pointer hover:text-gray-700">{"< "} Back to jobs</button>
+          </div>
         <div className="flex flex-col md:flex-row md:justify-between mx-3 mt-3">
           <div className="flex flex-col gap-3">
             <div>
@@ -99,6 +101,7 @@ const JobDetails = () => {
         </div>
       </div>
     </div>
+    </Suspense>
   )
 }
 
