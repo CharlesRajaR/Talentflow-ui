@@ -2,15 +2,15 @@
 import { useParams } from "next/navigation"
 import { Suspense } from "react";
 
-const JobDetails = () => {
+function JobDetailsContent() {
   const params = useParams<{ id: string }>()
 
   console.log('Server-side ID:', params);
 
 
   return (
-    // <div>JobDetails {id}</div>
-    <Suspense fallback={<div>Loading...</div>}>
+
+      
       <div className="min-h-screen flex items-center justify-center">
         <div className="flex px-4 py-6 mx-5 shadow-black shadow-2xl flex-col w-full">
           <div>
@@ -101,8 +101,13 @@ const JobDetails = () => {
         </div>
       </div>
     </div>
-    </Suspense>
   )
 }
 
-export default JobDetails
+export default function JobDetails() {
+  return(
+    <Suspense fallback={<div>Loading...</div>}>
+      <JobDetailsContent />
+    </Suspense>
+  )
+}
